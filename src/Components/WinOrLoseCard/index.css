@@ -94,6 +94,20 @@
     outline: none;
     margin-top: 10px;
   }
+  .reset-topscore-button {
+    background-color: #786bee;
+    color: #e6e6e6;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    border-radius: 20px;
+    margin: 15px;
+    padding: 16px;
+    cursor: pointer;
+    outline: none;
+    margin-top: 5px;
+  }
   .image-section-container {
     display: flex;
     justify-content: center;

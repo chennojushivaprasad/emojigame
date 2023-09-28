@@ -4,7 +4,7 @@ const LOSE_IMAGE = 'https://assets.ccbp.in/frontend/react-js/lose-game-img.png'
 const WON_IMAGE = 'https://assets.ccbp.in/frontend/react-js/won-game-img.png'
 
 const WinOrLoseCard = props => {
-  const {isWon, score, onClickPlayAgain} = props
+  const {isWon, score, onClickPlayAgain,onClickResetTopScore} = props
   const imgUrl = isWon ? WON_IMAGE : LOSE_IMAGE
   const gameStatus = isWon ? 'You Won' : 'You Lose'
   const scoreLabel = isWon ? 'Best Score' : 'Score'
@@ -21,6 +21,13 @@ const WinOrLoseCard = props => {
           onClick={onClickPlayAgain}
         >
           Play Again
+        </button>
+        <button
+          className="reset-topscore-button"
+          type="button"
+          onClick={onClickResetTopScore}
+        >
+          Reset Top Score
         </button>
       </div>
       <div className="image-section-container">

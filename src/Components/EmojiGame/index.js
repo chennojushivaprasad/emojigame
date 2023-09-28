@@ -8,10 +8,16 @@ const EmojiGame = (props) => {
   const [clickedEmojisList, setClickedEmojisList] = useState([]);
   const [isGameInProgress, setIsGameInProgress] = useState(true);
   const [topScore, setTopScore] = useState(
-    parseInt(localStorage.getItem("totalscore"))
-      ? parseInt(localStorage.getItem("totalscore"))
+    parseInt(localStorage.getItem("topscore"))
+      ? parseInt(localStorage.getItem("topscore"))
       : 0
   );
+
+  const handleResetTopScore = () => {
+    localStorage.setItem("topscore", 0);
+    setTopScore(0)
+    resetGame();
+  };
 
   const resetGame = () => {
     setClickedEmojisList([]);
@@ -20,7 +26,7 @@ const EmojiGame = (props) => {
 
   const finishGameAndSetTopScore = (currentScore) => {
     if (currentScore > topScore) {
-      localStorage.setItem("totalscore",currentScore)
+      localStorage.setItem("topscore", currentScore);
       setTopScore(currentScore);
     }
     setIsGameInProgress(false);
@@ -35,7 +41,7 @@ const EmojiGame = (props) => {
       finishGameAndSetTopScore(clickedEmojisLength);
     } else {
       if (clickedEmojisLength === emojisList.length - 1) {
-        localStorage.setItem("totalscore",12)
+        localStorage.setItem("topscore", emojisList.length);
         finishGameAndSetTopScore(emojisList.length);
       }
       setClickedEmojisList([...clickedEmojisList, id]);
@@ -72,6 +78,7 @@ const EmojiGame = (props) => {
         isWon={isWon}
         score={clickedEmojisList.length}
         onClickPlayAgain={resetGame}
+        onClickResetTopScore={handleResetTopScore}
       />
     );
   };
